@@ -1,4 +1,3 @@
-//jQuery.noConflict();
 (function($) {
     $.fn.input = function(options) {
 		
@@ -105,8 +104,7 @@
 
 				if (password.match(/([!,@,#,$,%,^,&,*,?,_,~])/) && password.match(/([a-zA-Z])/) && password.match(/([0-9]+)/))  score += 10;				
 				
-				//password is just a numbers or chars
-				if (password.match(/^\w+$/) || password.match(/^\d+$/) )  score -= 10; 
+				if (password.match(/^\w+$/) || password.match(/^\d+$/) )  score -= 10; //password is only chars or numbers
 				
 				if ( score < 0 )  score = 0; 
 				if ( score > 100 )  score = 100; 
