@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Registration</title>
+
+<link href='progression.min.css' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="progression.min.js"></script>
+<script type="text/javascript" src="myjqueryplugin.js"></script>
+<script type="text/javascript" src="myscript.js"></script>
+
+<style>
+	#form{
+		width:300px;
+		margin: 0 auto;
+	}
+	label{
+		display:block;
+	}
+	input{
+		width:100%;
+	}
+	.blueColor {
+		color: blue;
+	}
+</style>
+<script>
+	jQuery(document).ready(function($) {
+
+		$("#form").progression({
+		  tooltipWidth: '200',
+		  tooltipPosition: 'right',
+		  tooltipOffset: '50',
+		  showProgressBar: true,
+		  showHelper: true,
+		  tooltipFontSize: '14',
+		  tooltipFontColor: 'fff',
+		  progressBarBackground: 'fff',
+		  progressBarColor: '66cc00',
+		  tooltipBackgroundColor:'a2cbfa',
+		  tooltipPadding: '10',
+		  tooltipAnimate: true
+		});
+
+	});
+</script>
+<script language="javascript">	
+	function myFunction() {
+		var ok = true;
+        if ($("#password").val() != $("#repeatPassword").val()) {
+			ok=false;
+			$('#password').css("border", "red solid 2px");
+			$('#repeatPassword').css("border", "red solid 2px");
+			alert("Passwords do not match.");
+		}
+		return ok;
+    }
+
+</script>
+</head>
+	<body>
+		
+		<div>
+			<form id="form" onsubmit="return myFunction()" method="post">
+				<legend>Registration</legend>
+				<p>
+					<label for="firstName">First Name</label>
+					<input data-progression data-helper="The progression" id="firstName" name="firstName" tabindex="1" type="text">
+					<span class="emsg" hidden="true">Please enter a valid first name</span>
+				</p>
+				
+				<p>
+					<label for="lastName">Last Name</label>
+					<input data-progression data-helper="The progression" id="lastName" name="LastName" tabindex="1" type="text">
+					<span class="emsg" hidden="true">Please enter a valid last name</span>
+				</p>
+				
+				<p>
+					<label for="username">Username</label>
+					<input data-progression data-helper="The progression" id="username" name="username" tabindex="1" type="text">
+				</p>
+				
+				<p>
+					<label for="email">Email</label>
+					<input data-progression data-helper="The progression" id="email" name="email" placeholder="example@domain.com" type="text">
+					<span class="emsg" hidden="true">Please enter a valid email</span>					
+				</p>			
+				
+				<p>
+					<label for="password">Password</label>
+					<input id="password" name="password" tabindex="2" type="password" pattern=".{6,}"   required title="To short password! (min. 6 characters)"> 
+				</p>
+				
+				<p>
+					<label for="repeatPassword">Repeat password</label>
+					<!--<input id="repeatPassword" name="repeatPassword" tabindex="2" type="password" onfocus="validatePass(document.getElementById('password'), this);" oninput="validatePass(document.getElementById('password'), this);"> 
+					-->
+					<input id="repeatPassword" name="repeatPassword" tabindex="2" type="password" onchange="validatePass(document.getElementById('password'), this);"> 
+					<span id="passwordStrength"></span>
+				</p>
+				
+				<br /><br />
+				<input class="buttom" name="submit" id="submit" tabindex="5" value="Register" type="submit"> 
+			</form>
+		</div>			
+	</body>
+		
+</html>
