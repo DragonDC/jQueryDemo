@@ -1,7 +1,7 @@
 (function($) {
     $.fn.input = function(options) {
 		
-		return this.each(function() {
+		return this.each(function() {//without each only the first input have this options
 			var settings = $.extend({
 				text : "Write sth"
 			}, options);
@@ -47,7 +47,6 @@
 	
 	$.fn.validateEmail = function(options) {
 		
-		return this.each(function() {
 			var settings = $.extend({
 				pattern : /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/
 			}, options);
@@ -64,7 +63,6 @@
                }
 			});
 			
-		});
 	};
 	
 	$.fn.passwordStrength = function(options){
